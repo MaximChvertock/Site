@@ -1,0 +1,71 @@
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+ 
+ 
+	<import resource="security.xml"/>
+	<import resource="hibernate.xml"/>
+ 
+	<context:component-scan base-package="by.chvertock.web.site"/>
+	
+	<mvc:annotation-driven/>
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    
+    <context:property-placeholder location="classpath:application.properties" />
+	
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+				<value>validation</value>
+			</list>
+		</property>
+	</bean>
+	
+	 
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+
+	<!-- working gmail account -->
+    <!-- 
+    <bean id="mailSender" class="by.chvertock.web.site.service.MailSender">
+        <property name="login" value="ftnoreplytest@gmail.com"/>
+        <property name="password" value="rGKHSZr2BTNTkNnsKmoZ"/>
+        <property name="properties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.host">smtp.gmail.com</prop>
+                <prop key="mail.smtp.port">587</prop>
+            </props>
+        </property>
+    </bean>
+    -->
+    
+    <!-- mochahost.com account -->
+	<bean id="mailSender" class="by.chvertock.web.site.model.mail.MailSender">
+        <property name="username" value="admin@mchvertock.xyz"/>
+        <property name="password" value="Q5socHaBc6s5"/>
+        <property name="properties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.host">mail.mchvertock.xyz</prop>
+                <prop key="mail.smtp.port">2525</prop>
+            </props>
+        </property>
+    </bean>
+    
+</beans>

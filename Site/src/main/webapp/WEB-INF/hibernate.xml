@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       		http://www.springframework.org/schema/beans 
+       		http://www.springframework.org/schema/beans/spring-beans.xsd 
+       		http://www.springframework.org/schema/tx 
+       		http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+<!--
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        
+         
+        <property name="url" value="jdbc:mysql://mysql3000.mochahost.com/madmax_webapp?characterEncoding=UTF-8" />
+		<property name="username" value="madmax_root" />
+		<property name="password" value="8lqSnAz1RXue" />
+
+		 
+        
+        <property name="url" value="jdbc:mysql://localhost:3306/webapp_dev?characterEncoding=UTF-8" />
+        <property name="username" value="root" />
+        <property name="password" value="1234" />
+        
+    </bean>
+-->
+    
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+    	<property name="jndiName" value="java:comp/env/jdbc/siteDB"/>
+	</bean>
+    
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        
+        <!-- entities -->
+        <property name="annotatedClasses">
+	        <list>
+	        	<value>by.chvertock.web.site.model.entities.forum.Topic</value>
+	        	<value>by.chvertock.web.site.model.entities.forum.Message</value>
+	        	<value>by.chvertock.web.site.model.entities.Role</value>
+	        	<value>by.chvertock.web.site.model.entities.User</value>
+	        </list>
+        </property>
+        <!-- /entities -->
+        
+        
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hbm2ddl.auto">update</prop>
+                <prop key="current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+                <prop key="show_sql">false</prop>
+
+                <prop key="hibernate.connection.CharSet">utf8</prop>
+                <prop key="hibernate.connection.characterEncoding">utf8</prop>
+                <prop key="hibernate.connection.useUnicode">true</prop>
+            </props>
+        </property>
+        
+        
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    
+</beans>
