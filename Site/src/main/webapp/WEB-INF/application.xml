@@ -38,26 +38,10 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 
-	<!-- working gmail account -->
-    <!-- 
-    <bean id="mailSender" class="by.chvertock.web.site.service.MailSender">
-        <property name="login" value="ftnoreplytest@gmail.com"/>
-        <property name="password" value="rGKHSZr2BTNTkNnsKmoZ"/>
-        <property name="properties">
-            <props>
-                <prop key="mail.smtp.auth">true</prop>
-                <prop key="mail.smtp.starttls.enable">true</prop>
-                <prop key="mail.smtp.host">smtp.gmail.com</prop>
-                <prop key="mail.smtp.port">587</prop>
-            </props>
-        </property>
-    </bean>
-    -->
     
-    <!-- mochahost.com account -->
 	<bean id="mailSender" class="by.chvertock.web.site.model.mail.MailSender">
-        <property name="username" value="admin@mchvertock.xyz"/>
-        <property name="password" value="Q5socHaBc6s5"/>
+        <property name="username" value=""/>
+        <property name="password" value=""/>
         <property name="properties">
             <props>
                 <prop key="mail.smtp.auth">true</prop>
