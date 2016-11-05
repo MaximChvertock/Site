@@ -1,0 +1,9 @@
+contact.email = contact@mail.com
+
+mail.smtp.auth=true
+mail.smtp.starttls.enable=true
+mail.smtp.host=mail.sitename.com
+mail.smtp.port=2525
+
+mail.sender.username=noreply@sitename.xyz
+mail.sender.password=secretpassword

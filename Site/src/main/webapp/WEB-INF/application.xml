@@ -40,14 +40,14 @@
 
     
 	<bean id="mailSender" class="by.chvertock.web.site.model.mail.MailSender">
-        <property name="username" value=""/>
-        <property name="password" value=""/>
+        <property name="username" value="${mailsender.username}"/>
+        <property name="password" value="${mailsender.password}"/>
         <property name="properties">
             <props>
-                <prop key="mail.smtp.auth">true</prop>
-                <prop key="mail.smtp.starttls.enable">true</prop>
-                <prop key="mail.smtp.host">mail.mchvertock.xyz</prop>
-                <prop key="mail.smtp.port">2525</prop>
+                <prop key="mail.smtp.auth">${mailsender.mail.smtp.auth}</prop>
+                <prop key="mail.smtp.starttls.enable">${mailsender.mail.smtp.starttls.enable}</prop>
+                <prop key="mail.smtp.host">${mailsender.mail.smtp.host}</prop>
+                <prop key="mail.smtp.port">${mailsender.mail.smtp.port}</prop>
             </props>
         </property>
     </bean>
