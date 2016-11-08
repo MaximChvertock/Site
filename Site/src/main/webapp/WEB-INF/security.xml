@@ -29,13 +29,13 @@
 <!-- 			password-parameter="password" -->
 
 		<form-login
-			login-page="/signin"
+			login-page="/login"
 			default-target-url="/home"
-			authentication-failure-url="/signin?error" 
+			authentication-failure-url="/login?error" 
 			username-parameter="username" 
 			password-parameter="password"/>
 			
-        <logout logout-success-url="/signin?logout" />
+        <logout logout-success-url="/login?logout" />
     
 
 

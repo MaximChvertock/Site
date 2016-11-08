@@ -7,10 +7,6 @@
 	metadata-complete="true"
 	version="3.1">
   
-	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
-  
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/application.xml</param-value>
