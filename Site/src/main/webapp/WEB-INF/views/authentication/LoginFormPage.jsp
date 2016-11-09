@@ -36,15 +36,15 @@
 					action="${contextPath}/login"
 					modelAttribute="loginForm">
 					
-					<c:if test="${error != null}">
+					<c:if test="${authenticationError == true}">
 						<div class="w3-container w3-panel w3-red w3-card-4">
-							<p>${error}</p>
+							<p><spring:message code="authentication.error" /></p>
 						</div>
 					</c:if>
 					
-					<c:if test="${message != null}">
+					<c:if test="${loggedOut == true}">
 						<div class="w3-container w3-panel w3-green w3-card-4">
-							<p>${message}</p>
+							<p><spring:message code="logout.message" /></p>
 						</div>
 					</c:if>
 					
@@ -53,6 +53,7 @@
 						<input class="w3-input"
 							type="text"
 							name="username"
+							required="required"
 							placeholder="Username"
 							value="${loginForm.username}" 
 							autofocus="autofocus"/>
@@ -63,11 +64,15 @@
 						<input class="w3-input"
 							type="password" 
 							name="password"
+							required="required"
 							placeholder="Password"
 							value="${loginForm.password}" />
 					</div>
 					
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					
+					<a class="w3-small"
+						href=${pageContext.request.contextPath}/new-user><spring:message code="registration"/></a>
 					
 					<input 
 						class="w3-btn w3-right w3-theme" 

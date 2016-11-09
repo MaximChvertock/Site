@@ -73,7 +73,7 @@
 <!-- 			</li> -->
 <%-- 		</c:if> --%>
 			
-<!--
+
 		<li class="w3-right w3-dropdown-click">
 			<a 
 				onclick="showLang()" 
@@ -85,7 +85,7 @@
 			</div>
 				
 		</li>
--->
+
 	</ul>
 </div>
 

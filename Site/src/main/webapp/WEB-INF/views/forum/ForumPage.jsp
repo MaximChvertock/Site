@@ -94,6 +94,7 @@
 		
 		<security:authorize access="hasRole('ROLE_ANON')">
 			<spring:message code="info.log_for_post_new_topics"/>
+			<a href=${pageContext.request.contextPath}/login><spring:message code="form.title.signin"/></a>
 		</security:authorize>
 
 

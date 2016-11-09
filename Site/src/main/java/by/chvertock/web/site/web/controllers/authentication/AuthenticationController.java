@@ -23,11 +23,12 @@ public class AuthenticationController {
     
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
+	
         if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+            model.addAttribute("authenticationError", "true");
 
         if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
+            model.addAttribute("loggedOut", "true");
 
         return "authentication/LoginFormPage";
     }

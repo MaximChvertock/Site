@@ -16,11 +16,16 @@
 
 
 	<!-- Container (Contact Section) -->
-	<div class="w3-content w3-container w3-padding-64">
-	    <div class="w3-row w3-padding-32 w3-section">
-	        <div class="w3-col m8 w3-container w3-section">
+	<div class="w3-container w3-padding-64">
 	
-				
+		<div class="w3-row">
+			<div class="w3-container w3-quarter"></div>
+		
+			<div class="w3-half">
+				<!-- Title -->
+				<div class="w3-theme w3-center">
+					<p class="w3-large"><spring:message code="form.title.signup" /></p>
+				</div>
 	
 	            <form:form 
 					class="w3-container w3-card-4 w3-padding-16 w3-white"
@@ -29,7 +34,9 @@
 	            	modelAttribute="newUserForm">
 	            	
 	            	<c:if test="${duplicateUserError == true}">
-	            		<label class="w3-label w3-text-red"><spring:message code="error.user.duplicate" /></label>
+	            		<div class="w3-container w3-panel w3-red w3-card-4">
+							<p><spring:message code="error.user.duplicate" /></p>
+						</div>
 	            	</c:if>
 	                
 	                <!-- Username -->
@@ -40,7 +47,9 @@
 		                    type="text"
 		                    name="name"
 		                    value="${name}"
-		                   	required="required" >
+		                   	required="required" 
+		                   	placeholder="Your name"
+							autofocus="autofocus">
 	                </div>
 	                
 	                <!-- Email -->
@@ -51,7 +60,8 @@
 		                    type="email"
 		                    name="email"
 		                    value="${email}"
-		                   	required="required" >
+		                   	required="required" 
+		                   	placeholder="Your email">
 	                </div>
 	                
 	                <!-- Password -->
@@ -62,7 +72,8 @@
 		                    type="password"
 		                    name="password"
 		                    value="${password}"
-							required="required" >
+							required="required" 
+		                   	placeholder="Your secret password">
 	                </div>
 	                
 					<input class="w3-btn w3-right w3-theme" type="submit" value="<spring:message code="new_user.submit"/>" />
